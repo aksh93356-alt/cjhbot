@@ -84,3 +84,15 @@ package.json    dependencies (discord.js, dotenv)
 install.sh      CJH BOT SETUP menu (install / uninstall / update)
 README.md
 ```
+
+
+## you vps discord bot instalestion
+
+**commands**
+```git clone https://github.com/aksh93356-alt/cjhbot.git```
+**next commands**
+```cd cjhbot```
+**next commands**
+```chmod +x install.sh```
+**next commands**
+```./install.sh```
