@@ -26,32 +26,45 @@ Owner-only `/announcement` (alias `/announce`) command for your Discord server, 
 
 Note: bots in 100+ servers need Discord verification to keep the Server Members Intent.
 
-## 2. Install on a Linux VPS (Debian/Ubuntu), one command
+## 2. Install on a Linux VPS (Debian/Ubuntu)
 
 ```bash
 git clone https://github.com/YOUR_NAME/discord-announce-bot.git && cd discord-announce-bot && bash install.sh
 ```
 
-`install.sh` will:
+This opens the **CJH BOT SETUP** menu:
 
-1. update system packages and install Node.js 20, npm and git if missing
-2. ask for **BOT_TOKEN**, **OWNER_ID** and **BOT_NAME**
-3. write them into `.env` (permissions 600)
-4. run `npm install`
-5. ask whether to start the bot directly or in the background with PM2
+```
+  ╔══════════════════════════════════════════╗
+  ║              CJH BOT SETUP               ║
+  ╚══════════════════════════════════════════╝
+   1) Install Bot
+   2) Uninstall Bot
+   3) Update Bot
+   4) Exit
 
-When the bot is online you will see: `✅ <BOT_NAME> is online! Logged in as ...`
-
-Skip the questions by passing values:
-
-```bash
-BOT_TOKEN=xxxx OWNER_ID=123456789012345678 BOT_NAME="My Bot" bash install.sh
+  Choose an option [1-4]:
 ```
 
-Manual way: `cp .env.example .env`, edit it, then `npm install && npm start`.
+| Option | What it does |
+|---|---|
+| **1) Install Bot** | Updates system packages, installs Node.js 20, npm and git if missing, asks for **BOT_TOKEN**, **OWNER_ID** and **BOT_NAME**, writes `.env` (permissions 600), runs `npm install`, and starts the bot in the background with PM2 (also on reboot). |
+| **2) Uninstall Bot** | After you type `yes`: stops the bot, removes it from PM2 (and its PM2 logs), and deletes the bot folder including `.env`. Node.js, npm, git and PM2 stay installed. |
+| **3) Update Bot** | `git pull`, `npm install`, then restarts the bot with PM2. Your `.env` is kept. |
+| **4) Exit** | Leaves the menu. |
 
-Useful PM2 commands: `pm2 logs discord-announce-bot`, `pm2 restart discord-announce-bot`.
-Update later: `git pull && npm install --omit=dev && pm2 restart discord-announce-bot`.
+When the bot is online you will see: `✅ <BOT_NAME> is online! Logged in as ...` (check with `pm2 logs discord-announce-bot`).
+
+Shortcuts:
+
+```bash
+bash install.sh install      # go straight to an action (install | update | uninstall)
+BOT_TOKEN=xxxx OWNER_ID=123456789012345678 BOT_NAME="My Bot" bash install.sh install   # no questions
+```
+
+Running the script from outside the repo? Set `REPO_URL=https://github.com/YOUR_NAME/discord-announce-bot.git` and it clones the bot to `~/discord-announce-bot` (override with `INSTALL_DIR`).
+
+Manual way: `cp .env.example .env`, edit it, then `npm install && npm start`.
 
 ## Important: read before mass-DMing
 
@@ -68,6 +81,6 @@ index.js        bot, commands, DM logic
 package.json    dependencies (discord.js, dotenv)
 .env.example    BOT_TOKEN, OWNER_ID, BOT_NAME
 .gitignore      keeps .env and node_modules out of git
-install.sh      all-in-one installer for a VPS
+install.sh      CJH BOT SETUP menu (install / uninstall / update)
 README.md
 ```
