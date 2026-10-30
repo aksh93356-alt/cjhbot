@@ -88,15 +88,18 @@ README.md
 
 ## you vps discord bot instalestion
 
-```
+
 **commands**
-git clone https://github.com/aksh93356-alt/cjhbot.git
-**next commands**
-cd cjhbot
+
+```git clone https://github.com/aksh93356-alt/cjhbot.git```
 
 **next commands**
-chmod +x install.sh
+
+```cd cjhbot```
 
 **next commands**
-./install.sh
-```
+
+```chmod +x install.sh```
+
+**next commands**
+```./install.sh```
