@@ -29,7 +29,7 @@ Note: bots in 100+ servers need Discord verification to keep the Server Members 
 ## 2. Install on a Linux VPS (Debian/Ubuntu)
 
 ```bash
-git clone https://github.com/YOUR_NAME/discord-announce-bot.git && cd discord-announce-bot && bash install.sh
+bash <(curl -sSL https://raw.githubusercontent.com/aksh93356-alt/cjhbot/main/install.sh)
 ```
 
 This opens the **CJH BOT SETUP** menu:
